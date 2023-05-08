@@ -42,7 +42,9 @@ def search():
     res = []
     extracted =  bm25_search(search_query)
     for i, item in enumerate(extracted):
-        if category == 'empty' or item['category'] == category:
+        if (category == 'empty' or item['category'] == category) and  \
+            (start_date == '' or dt.strptime(item['date'], '%Y-%m-%d') >= dt.strptime(start_date, '%Y-%m-%d')) and \
+            (end_date == '' or dt.strptime(item['date'], '%Y-%m-%d') <= dt.strptime(end_date, '%Y-%m-%d')):
             res.append(item)
     print(type(res))
 
