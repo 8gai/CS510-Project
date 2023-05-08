@@ -18,7 +18,7 @@
             <ul id="data" class="course_table">
                 {% for entry in search_res %}
                 <li>
-                    <h3><a href="{{ entry['link']}}">{{entry['headline']}}</a></h3><br>
+                    <h3><a href="{{ entry['link']}}" target="_blank">{{entry['headline']}}</a></h3><br>
                     {{entry['short_description']}}
                 </li>
                 {% endfor %}
