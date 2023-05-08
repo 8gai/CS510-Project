@@ -1,11 +1,11 @@
 """Setup at app startup"""
 import os
-import sqlalchemy
+# import sqlalchemy
 from flask import Flask
 from yaml import load, Loader
 
 
-
+'''
 def init_connection_engine():
     """ initialize database setup
     Takes in os variables from environment if on GCP
@@ -43,6 +43,7 @@ def init_connection_engine():
 
 # 
 db = init_connection_engine()
+'''
 '''
 conn = db.connect()
 results = conn.execute("SELECT * FROM Professors p JOIN Instruct i ON (p.NetId = i.Professor) NATURAL JOIN Sections s NATURAL JOIN Courses c WHERE p.Name LIKE '%%Alawini%%';").fetchall()

@@ -1,7 +1,8 @@
 """ Specifies routing for the application"""
 from flask import render_template, request, jsonify, flash, session, redirect, url_for
 from app import app
-from app import database as db_helper
+# from app import database as db_helper
+from app.bm25 import bm25_search
 
 # needed to use sessions
 app.secret_key = "this is a great secret key"
@@ -37,7 +38,7 @@ def search():
     if category != "empty":
         session["category"] = category
     
-    #res =  bm25(search_query)
+    res =  bm25_search(search_query)
 
     return redirect(url_for("result"))
 
