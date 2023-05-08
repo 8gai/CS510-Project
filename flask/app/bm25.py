@@ -33,7 +33,7 @@ def bm25_search(query):
     sort_idx = np.flip(np.argsort(doc_scores)[-num_articles:])
     result = []
     for idx in sort_idx:
-        print(score_normalized[idx], data[idx][1])
+        # print(score_normalized[idx], data[idx][1])
         result.append(data[idx][1])
     return result
 

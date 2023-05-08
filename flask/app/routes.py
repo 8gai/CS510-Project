@@ -41,7 +41,7 @@ def search():
     res =  bm25_search(search_query)
     print(type(res))
 
-    return redirect(url_for("result", search_res = res))
+    return render_template("result.html", search_res = res)
 
 
 #this is search result display page

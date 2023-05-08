@@ -1,1 +1,3 @@
 flask/virtual_env
+flask/.venv 
+preprocessing.py
