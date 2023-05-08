@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Search Result</title>
+	</head>
+
+	<body>
+
+        <div class="topnav">
+            <a class="active" href="{{ url_for("result") }}">Manage Schedule</a>
+            <a href="{{ url_for("search") }}">New Search</a>
+        </div>
+        <br /><br />
+        <h2>Your Schedule for current semester</h2>
+
+        <div>
+          <table id="show_enroll"></table>
+        </div>
+        
+        {% if enrolled|length == 0 %}
+            <li><em>You are not enrolled in any course, use "Course Explorer" to register for courses!</em>
+        {% else %}
+            {% block content %}
+            <table id="data" class="course_table">
+            <thead>
+                <tr>
+                    <th>CRN</th>
+                    <th>Course ID</th>
+                    <th>Title</th>
+                    <th>Lecture Type</th>
+                    <th>Lecture Time</th>
+                    <th>Location</th>
+                    <th>Credit</th>
+                    <th>Grades</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in enrolled %}
+                <tr>
+                    <td>{{ entry[0] }}</td>
+                    <td>{{ entry[1] }}</td>
+                    <td>{{ entry[2] }}</td>
+                    <td>{{ entry[3] }}</td>
+                    <td>{{ entry[4] }}</td>
+                    <td>{{ entry[5] }}</td>
+                    <td>{{ entry[6] }}</td>
+                    <td>{{ entry[7] }}</td>
+                    <td><a class = 'button' href="{{ url_for('drop', drop_crn = entry[0]) }}">Drop Course</a></td>
+
+                    <td>
+                    <form action="{{ url_for('update_cred', crn = entry[0]) }}" method="POST">
+                        <input type="number" name="new_cred" placeholder="Enter new credit" min="0" />
+                        <input type = 'submit' value = 'Update Credit' ></input>
+                    </form>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        {% endblock %}
+        {% endif %}
+
+        {% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul class="flashes">
+					{% for m in messages %}
+						<li>{{ m }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+
+	</body>
+    <style>
+        /* Add a black background color to the top navigation */
+        .topnav {
+        background-color: #333;
+        overflow: hidden;
+        }
+
+        /* Style the links inside the navigation bar */
+        .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+        /* Change the color of links on hover */
+        .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+        }
+
+        /* Add a color to the active/current link */
+        .topnav a.active {
+        background-color: #04AA6D;
+        color: white;
+        }
+
+        table {
+            border: 1px solid;
+            width: 100%;
+        }
+
+        table.course_table tr td { font-size: 15px; }
+
+        .button{
+        background-color: #2a609a;
+            width: 100px;
+            height: 60px;
+        color: white;
+        outline: none;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+        white-space: nowrap;
+        }
+
+        .block-display button{
+        margin-bottom:10px;
+        display:block;
+        }
+
+        .button:hover{
+        background-color: #32CD32;
+        font-size: 18px;
+        transition: 0.5s;
+        white-space: nowrap;
+        }
+
+        input[type="text"] {
+            width: 100px;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+    
+</html>

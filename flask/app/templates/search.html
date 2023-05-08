@@ -1,0 +1,61 @@
+<!-- this is the main page of the website, displayed when first opening the site-->
+<!--part of the code from class repository-->
+<!DOCTYPE html> 
+<html>
+	<head>
+		<title>News Search</title>
+	</head>
+
+	<body>
+		<h1>Advanced News Search</h1>
+		<form action="/search" method="post">
+			<input type="text" name="query" placeholder="Search.." style="font-size:18pt;height:40px;width:600px;"/>
+			<br />
+			<hr/>
+			<br />
+			Location:  <input type="text" name="Location"/>
+			<br />
+			Date from:  <input type="date" name="startDate"/>
+			<br />
+			Date to: <input type="date" name="endDate"/>
+			<br />
+			Category: 
+			<select name="Category" id="Category">
+				<option value="empty"></option>
+				<option value="POLITICS">POLITICS</option>
+				<option value="WELLNES">WELLNES</option>
+				<option value="ENTERTAINMENT">ENTERTAINMENT</option>
+				<option value="TRAVEL">TRAVEL</option>
+				<option value="STYLE & BEAUTY">STYLE & BEAUTY</option>
+				<option value="PARENTING">PARENTING</option>
+				<option value="EALTHY LIVING">HEALTHY LIVING</option>
+				<option value="QUEER VOICES">QUEER VOICES</option>
+				<option value="FOOD & DRINK">FOOD & DRINK</option>
+				<option value="BUSINESS">BUSINESS</option>
+				<option value="COMEDY">COMEDY</option>
+				<option value="SPORTS">SPORTS</option>
+				<option value="LACK VOICES">BLACK VOICES</option>
+				<option value="HOME & LIVING">HOME & LIVING</option>
+				<option value="PARENTS">PARENTS</option>
+			</select>
+			<br />
+			<input type="submit" name="search" value="Search" />
+		</form>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul class="flashes">
+					{% for m in messages %}
+						<li>{{ m }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+		{% block body %}
+		{% endblock %}
+	</body>
+	<style>
+	h1 {text-align: center;}
+	h2 {text-align: center;}
+	form {text-align: center;}
+	</style>
+</html>
