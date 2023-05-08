@@ -1,5 +1,6 @@
 """ Specifies routing for the application"""
 from flask import render_template, request, jsonify, flash, session, redirect, url_for
+from datetime import datetime as dt
 from app import app
 # from app import database as db_helper
 from app.bm25 import bm25_search
@@ -38,13 +39,14 @@ def search():
     if category != "empty":
         session["category"] = category
     
-    res =  bm25_search(search_query)
+    res = []
+    extracted =  bm25_search(search_query)
+    for i, item in enumerate(extracted):
+        if category == 'empty' or item['category'] == category:
+            res.append(item)
     print(type(res))
 
     return render_template("result.html", search_res = res)
 
 
-#this is search result display page
-@app.route("/result", methods=["GET", "POST"])
-def result(search_res):
-    return render_template("result.html", to_show = search_res)
+

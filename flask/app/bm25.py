@@ -57,7 +57,7 @@ def bm25_search(query):
     num_articles = np.where(score_normalized>=0.7, 1, 0).sum()
     print("Relevant Articles: {}".format(num_articles))
     # print("Top {} Articles:".format(min(10, num_articles)))
-    sort_idx = np.flip(np.argsort(doc_scores)[-min(10, num_articles):])
+    sort_idx = np.flip(np.argsort(doc_scores)[-num_articles:])
     result = []
     for idx in sort_idx:
         # print(score_normalized[idx], data[idx][1])
