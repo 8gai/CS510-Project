@@ -8,15 +8,15 @@ import numpy as np
 
 
 def bm25_search(query):
-    file_path = 'News_Category_Dataset_v3.json'
+    file_path = '../news_dataset.json'
     data = []
-    with open(file_path, 'r') as fp:
+    with open(file_path, 'r', encoding='utf-8') as fp:
         lines = fp.readlines()
         for line in tqdm(lines):
             item = json.loads(line)
             category = item["category"]
             sentence = item["headline"].strip() + ". " + item["short_description"].strip()
-            data.append(sentence, item)
+            data.append([sentence, item])
     corpus = [doc[0].translate(str.maketrans('', '', string.punctuation)).replace('\n',"").lower() for doc in data]
     tokenized_corpus = [doc.split(" ") for doc in corpus]
 

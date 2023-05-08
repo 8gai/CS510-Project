@@ -2,7 +2,7 @@
 import os
 # import sqlalchemy
 from flask import Flask
-from yaml import load, Loader
+# from yaml import load, Loader
 
 
 '''
