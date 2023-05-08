@@ -19,12 +19,27 @@ def search():
     end_date = request.form.get("endDate")
     category = request.form.get("Category")
     print(search_query)
+
     print(location)
-    print(type(start_date))
+    print(start_date)
     print(end_date)
     print(category)
 
-    return redirect(url_for("show_result"))
+    session["bm25_input"] = search_query
+
+    #save search options to session if specified
+    if len(location):
+        session["location"] = location
+    if len(start_date):
+        session["start_date"] = start_date
+    if len(end_date):
+        session["end_date"] = end_date
+    if category != "empty":
+        session["category"] = category
+    
+    #res =  bm25(search_query)
+
+    return redirect(url_for("result"))
 
 
 #this is student home page
