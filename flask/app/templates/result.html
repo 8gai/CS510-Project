@@ -10,6 +10,29 @@
             <a class="active" href="{{ url_for("result") }}">Search Result</a>
             <a href="{{ url_for("homepage") }}">New Search</a>
         </div>
+
+        {% if search_res|length == 0 %}
+            <li><em>Your search returned 0 results, please try search again. </em>
+        {% else %}
+            {% block content %}
+            <table id="data" class="course_table">
+            <thead>
+                <tr>
+                    <th>CRN</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in search_res %}
+                <tr>
+                    <td>{{ entry['link'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+            {% endblock %}
+        {% endif %}
+
+
         
 	</body>
     <style>
