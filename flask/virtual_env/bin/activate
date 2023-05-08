@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/feiya/Documents/GitHub/fa22-cs411-A-team013-iloveCS411/flask/virtual_env"
+VIRTUAL_ENV="/Users/feiya/Documents/GitHub/CS510-Project/flask/virtual_env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

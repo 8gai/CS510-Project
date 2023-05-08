@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/Users/feiya/Desktop/CS411/Project1 flask/virtual_env/bin/python3" "$0" "$@"
-' '''
+#!/Users/feiya/Documents/GitHub/CS510-Project/flask/virtual_env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

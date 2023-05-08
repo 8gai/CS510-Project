@@ -39,11 +39,12 @@ def search():
         session["category"] = category
     
     res =  bm25_search(search_query)
+    print(type(res))
 
-    return redirect(url_for("result"))
+    return redirect(url_for("result", search_res = res))
 
 
-#this is student home page
+#this is search result display page
 @app.route("/result", methods=["GET", "POST"])
-def result():
-    return render_template("result.html")
+def result(search_res):
+    return render_template("result.html", to_show = search_res)
