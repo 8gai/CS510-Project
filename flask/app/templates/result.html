@@ -19,7 +19,7 @@
                 {% for entry in search_res %}
                 <li>
                     <h3><a href="{{ entry['link']}}" target="_blank">{{entry['headline']}}</a></h3><br>
-                    {{entry['category']}} | {{entry['date']}} <br>
+                    {{entry['category']}} | {{entry['date']}} || {{entry['location']}} <br>
                     Description: {{entry['short_description']}}
                 </li>
                 <hr>
