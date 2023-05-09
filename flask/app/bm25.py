@@ -41,9 +41,9 @@ def bm25_search(query):
 
     corrected_query = []
     for word in query.split(" "):
-        corrected_query.append(Word(word).correct())
+        corrected_query.append(word)
 
-    print("corrected: {}".format(corrected_query))
+    #print("corrected: {}".format(corrected_query))
 
 
     tokenized_query = [word.lower() for word in corrected_query]

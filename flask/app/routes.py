@@ -44,9 +44,11 @@ def search():
     for i, item in enumerate(extracted):
         if (category == 'empty' or item['category'] == category) and  \
             (start_date == '' or dt.strptime(item['date'], '%Y-%m-%d') >= dt.strptime(start_date, '%Y-%m-%d')) and \
-            (end_date == '' or dt.strptime(item['date'], '%Y-%m-%d') <= dt.strptime(end_date, '%Y-%m-%d')):
+            (end_date == '' or dt.strptime(item['date'], '%Y-%m-%d') <= dt.strptime(end_date, '%Y-%m-%d')) and \
+            (location == '' or location in item['location']):
+
             res.append(item)
-    print(type(res))
+
 
     return render_template("result.html", search_res = res)
 
