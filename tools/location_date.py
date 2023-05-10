@@ -8,12 +8,8 @@ from nltk import word_tokenize
 from nltk.corpus import stopwords
 from nltk import pos_tag, ne_chunk
 from nltk import Tree
-from nltk.stem import PorterStemmer
-import numpy as np
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-from datetime import datetime
-from rank_bm25 import BM25Okapi
 
 def extract_location(url):
   page = urlopen(url)

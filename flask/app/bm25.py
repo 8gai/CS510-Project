@@ -4,23 +4,10 @@ import json
 import string
 from tqdm import tqdm
 import numpy as np
-from app.location_date import extract_location
-import nltk
-from nltk import word_tokenize
-from nltk.corpus import stopwords
-from nltk import pos_tag, ne_chunk
-from nltk import Tree
-from nltk.stem import PorterStemmer
-
-from bs4 import BeautifulSoup
-from urllib.request import urlopen
-from datetime import datetime
-
-
 
 
 def bm25_search(query):
-    file_path = '../news_dataset_short_loc.json'
+    file_path = '../news_dataset_short_loc.json' # change the file path
     data = []
     with open(file_path, 'r', encoding='utf-8') as fp:
         lines = fp.readlines()
