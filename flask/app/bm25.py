@@ -20,7 +20,7 @@ from datetime import datetime
 
 
 def bm25_search(query):
-    file_path = '../news_dataset.json'
+    file_path = '../news_dataset_short_loc.json'
     data = []
     with open(file_path, 'r', encoding='utf-8') as fp:
         lines = fp.readlines()
